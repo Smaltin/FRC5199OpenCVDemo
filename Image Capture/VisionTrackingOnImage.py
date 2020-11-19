@@ -9,7 +9,7 @@ if __name__ == '__main__':
     dir_path = os.path.dirname(os.path.realpath(__file__))
     while(True):
         hull = []
-        img = cv2.imread(dir_path + "../Dark Images/BlueGoal-330in-ProtectedZone.jpg") #Reads the image provided
+        img = cv2.imread(dir_path + "../../Dark Images/BlueGoal-330in-ProtectedZone.jpg") #Reads the image provided
         cv2.imshow("Image", img) #Displays the image
 
         hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV) #Converts to HSV
