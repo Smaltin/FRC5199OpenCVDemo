@@ -7,10 +7,10 @@ if __name__ == '__main__':
     lower = np.array([50,150,80]) #Lower bound for the HSV Filter
     upper = np.array([90,255,255]) #Upper bound for the HSV Filter
     dir_path = os.path.dirname(os.path.realpath(__file__))
+    scannedimage = dir_path + "../../Dark Images/BlueGoal-330in-ProtectedZone.jpg"
     while(True):
         hull = []
-        img = cv2.imread(dir_path + "../../Dark Images/BlueGoal-330in-ProtectedZone.jpg") #Reads the image provided
-        cv2.imshow("Image", img) #Displays the image
+        img = cv2.imread(scannedimage) #Reads the image provided
 
         hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV) #Converts to HSV
         boundmask = cv2.inRange(hsv, lower, upper) #Masks to bright green
@@ -29,8 +29,7 @@ if __name__ == '__main__':
             cv2.circle(img, (cX, cY), 5, (255, 255, 255), -1)
             cv2.putText(img, "Centroid", (cX - 25, cY - 25),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
 
-        cv2.imshow("Final", traced)
-        cv2.imshow("Mask", boundmask)
+        cv2.imshow("", np.concatenate((cv2.imread(scannedimage), traced), axis=1))
 
         if cv2.waitKey(1) & 0xFF == ord('q'): #If q is pressed
             break #Exit the loop
